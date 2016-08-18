@@ -1,0 +1,17 @@
+.hancock-search-results
+  h1 Результаты поиска
+  = render partial: "hancock/search/search/form"
+  ol
+    - any = false
+    - @results.each do |r|
+      - any = true
+      li
+        .title= link_to r.name, url_for(r)
+        .text
+          = raw r.content
+          span.more= link_to 'открыть', url_for(r)
+
+  - unless any
+    .hancock-search-no-results К сожалению, ничего не найдено
+
+  = paginate @results if any
