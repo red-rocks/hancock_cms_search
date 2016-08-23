@@ -8,19 +8,7 @@ if Hancock.active_record?
 end
 
 module Hancock::Search
-  # Hancock::register_plugin(self)
-
-  class << self
-    def orm
-      Hancock.orm
-    end
-    def mongoid?
-      Hancock::Search.orm == :mongoid
-    end
-    def active_record?
-      Hancock::Search.orm == :active_record
-    end
-  end
+  include Hancock::Plugin
 
   module Controllers
     autoload :Search,            'hancock/search/controllers/search'
