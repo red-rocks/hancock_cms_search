@@ -1,8 +1,9 @@
 # HancockCMSSearch
 
-Search for [HancockCMS](https://github.com/red-rocks/hancock_cms). Items, Categories, embedded image galleries.
+Search for [HancockCMS](https://github.com/red-rocks/hancock_cms).
+Full text search, relevance
 
-### Remaded from [EnjoyCMSSearch](https://github.com/red-rocks/enjoy_cms_gallery)
+### Remaded from [EnjoyCMSSearch](https://github.com/enjocreative/enjoy_cms_search)
 
 ## Installation
 
@@ -22,7 +23,34 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Add in config/routes.rb
+
+```ruby
+  hancock_cms_search_routes
+```
+
+Also you need specify model for search, search method and other. in app/controllers/concerns/hancock/search/decorators/search.rb
+```ruby
+module Hancock::Search::Decorators
+  module Search
+    extend ActiveSupport::Concern
+
+    def search_model_class
+      YourModel
+    end
+
+    def fts_method
+      :search
+    end
+
+  end
+end
+```
+and add this to your_model.rb
+```ruby
+include Hancock::Search::Searchable
+```
+More [here](https://github.com/red-rocks/hancock_cms_search/blob/master/lib/hancock/search/controllers/search.rb) and [there](https://github.com/red-rocks/hancock_cms_search/blob/master/app/models/concerns/hancock/search/searchable.rb)
 
 ## Development
 
