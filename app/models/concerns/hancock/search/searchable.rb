@@ -8,12 +8,12 @@ module Hancock::Search::Searchable
         index(
           {
             name: "text"
-          }.merge(opts[:fields]),
+          }.merge(opts[:fields] || {}),
           {
             default_language: opts[:default_language] || "russian",
             weights: {
               name: 100
-            }.merge(opts[:weights]),
+            }.merge(opts[:weights] || {}),
             name: opts[:name]
           }
         )
