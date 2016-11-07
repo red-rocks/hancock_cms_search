@@ -22,8 +22,9 @@ module Hancock::Search::Searchable
   end
 
   included do
-    scope :fts, -> (query) {
-      ret = where({"$text": { "$search": query.to_s }})
+    scope :fts, -> (query, opts= {}) {
+      opts = { "$search": query.to_s}.merge(opts)
+      ret = where({"$text": opts})
       ret.options[:fields] = {"score": { "$meta": "textScore" }}
       ret.options[:sort] = {"score": { "$meta": "textScore" }}
       ret
