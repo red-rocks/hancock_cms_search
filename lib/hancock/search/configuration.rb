@@ -11,9 +11,9 @@ module Hancock::Search
     attr_accessor :pages_support
 
     def initialize
-      @breadcrumbs_on_rails_support = defined?(BreadcrumbsOnRails)
+      @breadcrumbs_on_rails_support = !!defined?(BreadcrumbsOnRails)
 
-      @pages_support = defined?(Hancock::Pages)
+      @pages_support = !!defined?(Hancock::Pages)
     end
   end
 end
