@@ -1,3 +1,6 @@
+- _partial_path = (Hancock::Search.config.seo_support ? 'shared/obj_with_seo' : 'shared/obj')
+= render _partial_path, obj: (@seo_page || @seo_parent_page)
+
 .hancock-search-results
   h1 Результаты поиска
   = render partial: "hancock/search/search/form"

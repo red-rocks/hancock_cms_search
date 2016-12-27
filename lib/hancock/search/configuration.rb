@@ -8,10 +8,16 @@ module Hancock::Search
   class Configuration
     attr_accessor :breadcrumbs_on_rails_support
 
+    attr_accessor :seo_support
+    attr_accessor :cache_support
+
     attr_accessor :pages_support
 
     def initialize
       @breadcrumbs_on_rails_support = !!defined?(BreadcrumbsOnRails)
+      
+      @seo_support = !!defined?(Hancock::Seo)
+      @cache_support  = !!defined?(Hancock::Cache)
 
       @pages_support = !!defined?(Hancock::Pages)
     end
