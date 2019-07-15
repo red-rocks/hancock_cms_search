@@ -11,6 +11,10 @@ module Hancock::Search
     attr_accessor :seo_support
     attr_accessor :cache_support
 
+    attr_accessor :model_settings_support
+    attr_accessor :items_per_page
+    attr_accessor :kaminari_config
+
     attr_accessor :pages_support
 
     def initialize
@@ -18,6 +22,10 @@ module Hancock::Search
       
       @seo_support = !!defined?(Hancock::Seo)
       @cache_support  = !!defined?(Hancock::Cache)
+
+      @model_settings_support = Hancock.config.model_settings_support
+      @items_per_page = 10
+      @kaminari_config = {}
 
       @pages_support = !!defined?(Hancock::Pages)
     end
